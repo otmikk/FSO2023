@@ -4,7 +4,9 @@ sequenceDiagram
     
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    Note left of server: Server redirects the response and process the input (ie adds data to the db)
+    Note left of server: The server process the input (ie adds data to the db), and redirects
+    server-->>browser: Status 302
+    Note right of browser: ...and the browser automatically sends a GET 
     deactivate server
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
